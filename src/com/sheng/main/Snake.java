@@ -2,6 +2,7 @@ package com.sheng.main;
 
 import java.awt.Point;
 import java.util.LinkedList;
+import javax.swing.*;
 
 public class Snake {
 	protected Point head;
@@ -12,6 +13,7 @@ public class Snake {
 	protected GamePanel gamePanel;
 	protected int direction;
 	protected int score;
+	//protected GameOver gameover;
 	/**
 	 * 级别，1,2,3分别代表低中高级，级别的改变会影响蛇的速度，级别可以在开始面板中进行控制，也可以游戏进行过程中随着得分增加进行提高
 	 * */
@@ -168,8 +170,15 @@ public class Snake {
 	/**
 	 * 死亡方法，直接退出游戏。
 	 * */
-	public void dead(){
-		System.exit(0);
+	public void dead(GamePanel gamePanel){
+		
+		JFrame frame1 = new GameOver(gamePanel);
+	    frame1.setTitle("GameOver frame");
+		frame1.setSize(600, 400);
+		frame1.setLocationRelativeTo(null);
+		frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame1.setUndecorated(true);
+		frame1.setVisible(true);
 	}
 	
 }
